@@ -1,0 +1,22 @@
+configurer sshd
+---
+sudo systemctl enable ssh
+
+configurer br0
+------
+sudo apt-get install bridge-utils
+sudo brctl addbr br0
+sudo brctl addif br0 wlan0
+sudo brctl addif br0 eth0
+
+hostapd
+-------
+sudo apt-get install hostapd
+
+créer fichier de conf /etc/hostapd/hostapd.conf
+
+
+par défaut le service est "masqué" pour systemctl
+=> systemctl unmask hostapd.service
+
+

@@ -1,0 +1,13 @@
+#!/bin/bash
+
+PART=$1
+DEV=/dev/${PART}
+LABEL=`lsblk ${DEV} -n -o label`
+
+if [ -z ${LABEL} ]
+then
+	LABEL="noname"
+fi
+
+/usr/bin/pmount --umask 000 --noatime -w --sync /dev/${PART} /media/${LABEL}
+

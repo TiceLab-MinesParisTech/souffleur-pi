@@ -1,0 +1,11 @@
+Source: souffleur-pi
+Section: web
+Priority: optional
+Maintainer: Nicolas Vion <nico@picapo.net>
+Build-Depends: debhelper (>= 9)
+
+Package: souffleur-pi
+Architecture: all
+Depends: souffleur, hostapd, udhcpd, bind9, nginx, bridge-utils
+Description: Configure your system as a wifi hotspot for Souffleur
+
