@@ -4,10 +4,13 @@ sudo systemctl enable ssh
 
 configurer br0
 ------
-sudo apt-get install bridge-utils
-sudo brctl addbr br0
-sudo brctl addif br0 wlan0
-sudo brctl addif br0 eth0
+//sudo apt-get install bridge-utils
+//sudo brctl addbr br0
+//sudo brctl addif br0 wlan0
+//sudo brctl addif br0 eth0
+=> non: copier /etc/network/interface (bridge-utils est-il necessaire?)
+
+cp conf/etc/network/interfaces /etc/network/interfaces
 
 hostapd
 -------
@@ -19,4 +22,5 @@ créer fichier de conf /etc/hostapd/hostapd.conf
 par défaut le service est "masqué" pour systemctl
 => systemctl unmask hostapd.service
 
-
+udhcpd
+------
