@@ -1,6 +1,6 @@
 configurer sshd
 ---
-sudo systemctl enable ssh
+$sudo systemctl enable ssh
 
 configurer br0
 ------
@@ -10,17 +10,59 @@ configurer br0
 //sudo brctl addif br0 eth0
 => non: copier /etc/network/interface (bridge-utils est-il necessaire?)
 
-cp conf/etc/network/interfaces /etc/network/interfaces
+$cp conf/etc/network/interfaces /etc/network/interfaces
 
 hostapd
 -------
-sudo apt-get install hostapd
+$sudo apt-get install hostapd
 
-créer fichier de conf /etc/hostapd/hostapd.conf
+créer fichiers de conf:
 
+$cp conf/etc/hostapd/hostapd.conf /etc/hostapd
+$cp conf/etc/default/hostapd /etc/default
 
 par défaut le service est "masqué" pour systemctl
-=> systemctl unmask hostapd.service
+$systemctl unmask hostapd.service
 
 udhcpd
 ------
+$sudo apt-get install udhcpd
+
+copie fichier de configuration
+$cp conf/etc/udhcpd.conf /etc/
+
+activer service: 
+commenter deuxième ligne dans /etc/default/udhcpd
+$sudo systemctl enable udhcpd.service
+
+nginx
+-----
+$sudo apt-get install nginx
+$cp conf/etc/nginx/sites-available/default /etc/nginx/sites-available/
+$sudo service nginx restart
+
+dnsmasq
+-------
+$sudo apt-get install dnsmasq
+copier /etc/dnsmasq.conf
+copier /etc/hosts
+
+ip_forwarding
+-------------
+
+avahi-daemon
+------------
+copier /etc/hostname
+copier /etc/avahi/avahi-daemon.conf
+systemctl enable avahi-daemon
+
+
+souffleur (avant nginx: libérer port 80 sur br0)
+---------
+installer paquet debian
+$dpkg -i souffleur_0.2.0-1_all.deb
+
+copie fichier de conf (le host devient 192.168.0.1)
+
+
+
