@@ -1,0 +1,60 @@
+#!/bin/bash
+
+function set_brightness {
+	echo $2 > /sys/class/leds/led$1/brightness
+}
+
+function unset_triggers {
+	echo none > /sys/class/leds/led0/trigger
+	echo none > /sys/class/leds/led1/trigger
+}
+
+function init {
+	unset_triggers
+	sync
+	set_brightness 0 0
+	set_brightness 1 0
+}
+
+function set_color {
+	case "$1" in
+		green)
+			set_brightness 0 255
+			set_brightness 1 0
+			;;
+
+		red)
+			set_brightness 0 0
+			set_brightness 1 255
+			;;
+
+		orange)
+			set_brightness 0 255
+			set_brightness 1 255
+			;;
+
+		black)
+			set_brightness 0 0
+			set_brightness 1 0
+			;;	
+	esac
+}
+
+function update {
+	if [ `systemctl is-active souffleur.service` == "active" ] 
+	then
+		echo "active"
+		set_color "green"
+	else
+		echo "non active"
+		set_state "red"
+	fi
+}
+
+init
+
+while /bin/true
+do
+	sleep 2
+	update
+done
