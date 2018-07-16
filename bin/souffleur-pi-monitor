@@ -52,14 +52,28 @@ function update {
 		set_color "green"
 	else
 		echo "non active"
-		set_state "red"
+		set_color "red"
 	fi
 }
 
-init
+function monitor {
+	init
 
-while /bin/true
-do
-	sleep 2
-	update
-done
+	while /bin/true
+	do
+		sleep 1
+		update
+	done
+}
+
+case "$1" in
+	start)
+		monitor
+		;;
+	stop)
+		reset_triggers
+		;;
+	*)
+		echo "usage: start stop"
+		;;	
+esac

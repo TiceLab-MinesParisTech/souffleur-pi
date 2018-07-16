@@ -1,0 +1,11 @@
+[Unit]
+Description=Update raspberry pi's in-board leds to monitorr Souffleur state
+
+[Service]
+Type=simple
+
+ExecStart=/usr/bin/souffleur-pi-monitor start
+ExecStop=/usr/bin/souffleur-pi-monitor stop
+
+[Install]
+WantedBy=multi-user.target
