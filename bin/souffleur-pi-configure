@@ -52,6 +52,11 @@ copy_conf_file /etc/avahi/avahi-daemon.conf
 systemctl enable avahi-daemon.service
 systemctl restart avahi-daemon.service
 
+echo "* Configure Samba daemon"
+copy_conf_file /etc/samba/smb.conf
+systemctl enable smbd.service
+systemctl restart smbd.service
+
 echo "* Configure Souffleur"
 copy_conf_file /etc/default/souffleur
 systemctl enable souffleur.service
