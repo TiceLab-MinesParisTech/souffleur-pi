@@ -45,8 +45,24 @@ function set_color {
 	esac
 }
 
+function get_state {
+	if [ `systemctl is-active souffleur.service` == "active" ]
+	then
+		return 1
+	fi
+	return 0 
+}
+
+function wait_until_ready {
+	while [ `systemctl is-active hostapd.service` == "inactive" ]
+	do
+		sleep 1
+	done
+}
+
 function update {
-	if [ `systemctl is-active souffleur.service` == "active" ] 
+	get_state
+	if [ $? -eq 1 ] 
 	then
 		echo "active"
 		set_color "green"
@@ -59,6 +75,7 @@ function update {
 function monitor {
 	init
 
+	wait_until_ready
 	while /bin/true
 	do
 		sleep 1
