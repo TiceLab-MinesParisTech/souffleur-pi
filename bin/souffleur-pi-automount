@@ -16,7 +16,7 @@ then
 	LABEL="noname"
 fi
 
-echo ${LABEL}
+#echo ${LABEL}
 
 /usr/bin/pmount --umask 000 --noatime -w --sync ${DEV} "/media/${LABEL}"
 
