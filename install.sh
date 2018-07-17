@@ -49,4 +49,4 @@ systemctl enable avahi-daemon.service
 echo "* Configure Souffleur"
 copy_conf_file /etc/default/souffleur
 systemctl restart souffleur.service
-
+systemctl enable souffleur.service
