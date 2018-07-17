@@ -6,6 +6,6 @@ Build-Depends: debhelper (>= 9)
 
 Package: souffleur-pi
 Architecture: all
-Depends: souffleur, hostapd, udhcpd, bind9, nginx, bridge-utils
-Description: Configure your system as a wifi hotspot for Souffleur
+Depends: openssh-server, souffleur, hostapd, dnsmasq, bridge-utils, avahi-daemon, openssh-server
+Description: Configure your system as a wifi hotspot & http server for Souffleur
 

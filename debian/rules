@@ -1,0 +1,14 @@
+#!/usr/bin/make -f
+
+clean:
+	rm -rf debian/souffleur-pi
+
+build:
+	@# Do nothing
+
+binary:
+	mkdir -p debian/souffleur-pi
+	dh_installdeb
+	dh_install
+	dh_gencontrol
+	dh_builddeb
