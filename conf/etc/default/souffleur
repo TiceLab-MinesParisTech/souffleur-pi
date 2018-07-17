@@ -1,4 +1,4 @@
 # Comment the following line to enable
 #SOUFFLEUR_ENABLED="no"
 
-SOUFFLEUR_OPTS="-P80 -Usouffleur -Gsouffleur -F/var/souffleur -H192.168.0.1"
+SOUFFLEUR_OPTS="-P80 -Usouffleur -Gsouffleur -F/media -H192.168.0.1"
