@@ -7,8 +7,9 @@ if [ "$EUID" -ne 0 ]; then
 fi
 
 #Global vars
-SCRIPT_PATH="$( cd "$(dirname "$0")" ; pwd -P )"
-CONF_PATH=$SCRIPT_PATH/conf
+#SCRIPT_PATH="$( cd "$(dirname "$0")" ; pwd -P )"
+#CONF_PATH=$SCRIPT_PATH/conf
+CONF_PATH=/usr/share/souffleur-pi/conf
 
 function copy_conf_file {
 	SRC=$CONF_PATH$1

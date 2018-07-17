@@ -1,2 +1,3 @@
 conf usr/share/souffleur-pi/
-bin/* usr/bin/souffleur-pi/
+bin usr
+conf/lib/systemd/system/souffleur-pi-monitor.service lib/systemd/system/
