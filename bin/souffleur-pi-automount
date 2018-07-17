@@ -1,13 +1,22 @@
 #!/bin/bash
 
-PART=$1
-DEV=/dev/${PART}
+DEV=$1
+
+if [ -z "${DEV}" ]
+then
+	echo "Usage: souffleur-pi-automount <dev>"
+	exit 2
+fi
+
+set -e
 LABEL=`lsblk ${DEV} -n -o label`
 
-if [ -z ${LABEL} ]
+if [ -z "${LABEL}" ]
 then
 	LABEL="noname"
 fi
 
-/usr/bin/pmount --umask 000 --noatime -w --sync /dev/${PART} /media/${LABEL}
+echo ${LABEL}
+
+/usr/bin/pmount --umask 000 --noatime -w --sync ${DEV} "/media/${LABEL}"
 
