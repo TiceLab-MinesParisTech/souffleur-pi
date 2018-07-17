@@ -1,5 +1,6 @@
 [Unit]
 Description=Update raspberry pi's in-board leds to monitorr Souffleur state
+After=hostapd.service souffleur.service dnsmasq.service avahi-daemon.service
 
 [Service]
 Type=simple

@@ -32,6 +32,7 @@ echo "* Configure network"
 copy_conf_file "/etc/network/interfaces"
 systemctl restart networking.service
 #br0 not defined the before the first reboot!
+systemctl disable systemd-hostnamed.service
 
 echo "* Configure Hostapd"
 copy_conf_file /etc/hostapd/hostapd.conf
