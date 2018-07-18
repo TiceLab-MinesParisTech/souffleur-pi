@@ -64,7 +64,7 @@ echo "* Configure Souffleur"
 copy_conf_file /etc/souffleur.conf
 systemctl enable souffleur.service
 systemctl restart souffleur.service
-ln -sf /var/souffleur /media/Projects
+ln -sfT /var/souffleur /media/Projects
 
 echo "* Configure Souffleur-pi-monitor"
 systemctl enable souffleur-pi-monitor.service
