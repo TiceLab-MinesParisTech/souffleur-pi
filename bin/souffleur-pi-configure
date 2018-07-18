@@ -39,7 +39,9 @@ copy_conf_file /etc/hostapd/hostapd.conf
 copy_conf_file /etc/default/hostapd
 #systemctl unmask hostapd.service
 systemctl enable hostapd.service
-systemctl restart hostapd.service
+systemctl stop hostapd.service
+sleep 2
+systemctl start hostapd.service
 
 echo "* Configure Dnsmasq"
 copy_conf_file /etc/dnsmasq.conf
@@ -59,7 +61,7 @@ systemctl enable smbd.service
 systemctl restart smbd.service
 
 echo "* Configure Souffleur"
-copy_conf_file /etc/default/souffleur
+copy_conf_file /etc/souffleur.conf
 systemctl enable souffleur.service
 systemctl restart souffleur.service
 ln -sf /var/souffleur /media/Projects
